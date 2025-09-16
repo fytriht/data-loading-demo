@@ -1,0 +1,260 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* TodoApp 样式 */
+.todo-container {
+  padding: 20px;
+  max-width: 480px;
+  width: 480px;
+  margin: 0 auto;
+}
+
+.todo-form {
+  margin-bottom: 20px;
+}
+
+.todo-input {
+  padding: 8px;
+  margin-right: 8px;
+  width: 300px;
+}
+
+.todo-submit-btn {
+  padding: 8px 16px;
+}
+
+.filter-container {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.filter-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.filter-btn {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filter-btn.active-all {
+  background-color: #007bff;
+  color: white;
+}
+
+.filter-btn.active-pending {
+  background-color: #ffc107;
+  color: white;
+}
+
+.filter-btn.active-completed {
+  background-color: #28a745;
+  color: white;
+}
+
+.filter-btn.inactive {
+  background-color: white;
+  color: black;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+
+.todo-item.completed {
+  background-color: #f0f0f0;
+}
+
+.todo-item.pending {
+  background-color: white;
+}
+
+.todo-checkbox {
+  margin-right: 8px;
+}
+
+.todo-edit-input {
+  flex: 1;
+  padding: 4px;
+  margin-right: 8px;
+}
+
+.todo-text {
+  flex: 1;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-text.pending {
+  text-decoration: none;
+  color: black;
+}
+
+.todo-actions {
+  margin-left: 8px;
+}
+
+.action-btn {
+  margin-right: 4px;
+  padding: 4px 8px;
+}
+
+.detail-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
+.stats {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* TodoDetail 样式 */
+.detail-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.detail-header {
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  padding: 8px 16px;
+  margin-right: 16px;
+}
+
+.detail-title {
+  display: inline;
+  margin: 0;
+}
+
+.detail-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #555;
+  min-width: 80px;
+  margin-right: 12px;
+}
+
+.detail-value {
+  color: #333;
+}
+
+.detail-value.breakable {
+  word-break: break-word;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
