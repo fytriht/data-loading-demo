@@ -41,19 +41,22 @@ export const useSyncQueryClientAtom = () => {
   setQueryClient(queryClient);
 };
 
-export const todosQueryAtom = atomWithQuery((get) => {
+export const todosQueryAtom = atomWithQuery(() => ({
+  queryKey: ["todos"],
+  queryFn: fetchTodos,
+}));
+
+export const todoListAtom = atom((get) => {
+  const todosQuery = get(todosQueryAtom);
   const filterStatus = get(filterStatusAtom);
-  return {
-    queryKey: ["todos", filterStatusAtom],
-    queryFn: fetchTodos,
-    select: (data) => {
-      if (filterStatus === "completed")
-        return data.filter((todo) => todo.completed);
-      if (filterStatus === "pending")
-        return data.filter((todo) => !todo.completed);
-      return data;
-    },
-  };
+  const todos = todosQuery.data ?? [];
+  if (filterStatus === "completed") {
+    return todos.filter((todo) => todo.completed);
+  } else if (filterStatus === "pending") {
+    return todos.filter((todo) => !todo.completed);
+  } else {
+    return todos;
+  }
 });
 
 export const createTodoMutationAtom = atomWithMutation((get) => ({

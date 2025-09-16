@@ -7,17 +7,23 @@ import {
   updateTodoMutationAtom,
   deleteTodoMutationAtom,
   toggleTodoMutationAtom,
-  filterStatusAtom
+  filterStatusAtom,
+  todoListAtom
 } from "./atoms";
 
 const TodoApp = () => {
   const navigate = useNavigate();
-  const { data: todos, isLoading, isError } = useAtomValue(todosQueryAtom);
+
+  const { isLoading, isError } = useAtomValue(todosQueryAtom);
+  const todos = useAtomValue(todoListAtom)
+  
   const createTodoMutation = useAtomValue(createTodoMutationAtom);
   const updateTodoMutation = useAtomValue(updateTodoMutationAtom);
   const deleteTodoMutation = useAtomValue(deleteTodoMutationAtom);
   const toggleTodoMutation = useAtomValue(toggleTodoMutationAtom);
+  
   const [filterStatus, setFilterStatus] = useAtom(filterStatusAtom);
+
   const [newTodoText, setNewTodoText] = useState("");
   const [editingTodo, setEditingTodo] = useState(null);
   const [editText, setEditText] = useState("");
@@ -93,7 +99,6 @@ const TodoApp = () => {
         </button>
       </form>
 
-      {/* 筛选器 */}
       <div className="filter-container">
         <span className="filter-label">筛选:</span>
         <button
@@ -116,7 +121,6 @@ const TodoApp = () => {
         </button>
       </div>
 
-      {/* Todo 列表 */}
       <div>
         {todos && todos.length === 0 ? (
           <p>暂无 todo 项目</p>
@@ -128,7 +132,6 @@ const TodoApp = () => {
               key={todo.id}
               className={`todo-item ${todo.completed ? "completed" : "pending"}`}
             >
-              {/* 完成状态复选框 */}
               <input
                 type="checkbox"
                 checked={todo.completed}
@@ -137,7 +140,6 @@ const TodoApp = () => {
                 className="todo-checkbox"
               />
 
-              {/* Todo 文本或编辑输入框 */}
               {editingTodo === todo.id ? (
                 <input
                   type="text"
@@ -158,7 +160,6 @@ const TodoApp = () => {
                 </span>
               )}
 
-              {/* 操作按钮 */}
               <div className="todo-actions">
                 {editingTodo === todo.id ? (
                   <>
@@ -205,7 +206,6 @@ const TodoApp = () => {
         )}
       </div>
 
-      {/* 统计信息 */}
       {todos && (
         <div className="stats">
           总计: {todos.length} 项 | 已完成:{" "}
